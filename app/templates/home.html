@@ -1,11 +1,10 @@
-<!--
- add ng-show and ng-bind to reveal different timers?--> 
+<!--add ng-show and ng-bind to reveal different timers?--> 
 <section class="container-fluid">
 	<div class="timer">
-		<h1>
+		<h1>{{counter | timecode}}
 		</h1>
-		<button type="button" class="btn btn-success btn-lg" aria-pressed="true">Start</button>
-		<button type="button" class="btn btn-danger btn-lg" aria-pressed="true">Stop</button>
+		<button type="button" class="btn btn-success btn-lg" aria-pressed="true" ng-click="start()">Start</button>
+		<button type="button" class="btn btn-danger btn-lg" aria-pressed="true" ng-click="reset()">Reset</button>
 	</div>
 </section>
 
