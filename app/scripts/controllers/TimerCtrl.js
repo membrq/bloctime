@@ -3,49 +3,32 @@
 		
 		//Initialize variables
 		$scope.counter = 1500;
-		var timeOut = null;
 		
 		//Start button
-		$scope.start = $interval(function() {
-			if($scope.counter <= 0) {
-				$interval.cancel(timeOut);
-				return;
-			} 
-			
-			var counter = $scope.counter--;
-			$interval(counter, 1000);
-		});
-
+		$scope.start = function() {
+			$interval(function() {
+				if($scope.counter <= 0) {
+					$interval.cancel();
+					return;
+				} 
+				
+				$scope.counter--;
+				console.log($scope.counter);
+			}, 1000, 5); //change 5 to $scope.counter or to a max # of times the start function will play
+	  	}
+		
+		
 		//Stop button
 		$scope.stop = function() {
-			$interval.cancel(timeOut);
+			$interval.cancel();
 		}
 		
 		//Reset button
 		$scope.reset = function() {
-			$interval.cancel(timeOut);
+			$interval.cancel();
 			$scope.counter = 1500;
-			timeOut = null;
 		}
 	}
-		
-//    	$scope.counter = 1500;
-//    	$scope.start = function(){
-//        	$scope.counter--;
-//        	if ($scope.counter > 0) {
-//            	mytimeout = $timeout($scope.onTimeout, 1000);
-//        	} else {
-//            	alert("Time is up!");
-//        	}
-//    	}
-//    
-//		var mytimeout = $timeout($scope.onTimeout, 1000);
-//    
-//    	$scope.reset= function(){
-//			$scope.counter = 1500;
-//        	mytimeout = $timeout($scope.onTimeOut, 1000);
-//		}
-//	}
 	
     angular
         .module('blocTime')
