@@ -1,20 +1,23 @@
-<!--add ng-show and ng-bind to reveal different timers?--> 
+<!--add ng-show and ng-bind to reveal different timers--> 
 <section class="container-fluid">
-	<div class="timer">
-		<h1>{{counter | timecode}}
-		</h1>
-		<button type="button" class="btn btn-success btn-lg" aria-pressed="true" ng-click="start()" >Start</button>
-		<button type="button" class="btn btn-primary btn-lg" aria-pressed="true" ng-click="stop()">Stop</button>
-		<button type="button" class="btn btn-danger btn-lg" aria-pressed="true" ng-click="reset()">Reset</button>
+	<div class="work-timer" ng-hide="breakTimer">
+		<div>
+			<h1>{{counter | timecode}}
+			</h1>
+			<button type="button" class="btn btn-success btn-lg" aria-pressed="true" ng-click="start()" ng-show="!workTimerRunning">Start</button>
+			<button type="button" class="btn btn-primary btn-lg" aria-pressed="true" ng-click="stop()" ng-show="workTimerRunning">Stop</button>
+			<button type="button" class="btn btn-danger btn-lg" aria-pressed="true" ng-click="reset()">Reset</button>
+		</div>
+	</div>
+	<div class="break-timer" ng-show="breakTimer">
+		<div>
+			<h1> {{ break | timecode}}
+			</h1>
+			<button type="button" class="btn btn-warning btn-lg" aria-pressed="true" ng-click="startBreak()">Start</button>
+			<button type="button" class="btn btn-danger btn-lg" aria-pressed="true" ng-click="resetBreak()">Reset</button>
+		</div>
+
 	</div>
 </section>
 
 
-<!-- break timer button -->
-<!--<section class="break">
-	<div class="container">
-		<div class="break-display">
-		</div>
-		<button type="button" class="btn-btn-outline-warning active" aria-pressed="true">Start</button>
-	</div>
-</section>-->

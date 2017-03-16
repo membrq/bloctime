@@ -2,33 +2,67 @@
 	function TimerCtrl($scope,$interval) {
 		
 		//Initialize variables
-		$scope.counter = 1500;
-		
+		$scope.counter = 2;
+		$scope.break = 300;
+		$scope.workTimer = true;
+		$scope.breakTimer = false;
+		$scope.workTimerRunning = false;
+		$scope.breakTimerRunning = false;
+				
 		//Start button
 		$scope.start = function() {
-			$interval(function() {
+			$scope.workTimer = true;
+			$scope.workTimerRunning = true;
+			startWork = $interval(function() {
 				if($scope.counter <= 0) {
-					$interval.cancel();
+					$interval.cancel(startWork);
+					$scope.breakTimer = true
+					console.log(($scope.breakTimer))
 					return;
 				} 
 				
 				$scope.counter--;
 				console.log($scope.counter);
-			}, 1000, 5); //change 5 to $scope.counter or to a max # of times the start function will play
-	  	}
-		
+			}, 1000)
+		}
 		
 		//Stop button
 		$scope.stop = function() {
-			$interval.cancel();
+			$scope.workTimer = true;
+			$interval.cancel(startWork);
+			startWork = undefined;
+			$scope.workTimerRunning = false;
 		}
-		
+			
 		//Reset button
 		$scope.reset = function() {
-			$interval.cancel();
+			$scope.workTimer = true;
+			$interval.cancel(startWork);
 			$scope.counter = 1500;
+			$scope.workTimerRunning = false;
 		}
-	}
+		
+		//Start break
+		$scope.startBreak = function() {
+			$scope.breakTimer = true;
+			$scope.breakTimerRunning = true;
+			startBreakSession = $interval(function() {
+				if ($scope.break <= 0) {
+					$interval.cancel();
+					return;
+				}
+				$scope.break--;
+			}, 1000);
+		}
+		
+		//Reset break
+		$scope.resetBreak = function() {
+			$scope.breakTimer = true;
+			$interval.cancel(startBreakSession);
+			$scope.break = 300;
+		}
+		
+	};
 	
     angular
         .module('blocTime')
@@ -36,22 +70,4 @@
 })();
 
 
-//setInterval for 1000ms
-//	subtract 1 from counter
-//	if counter === 0
-//		pause/play button disappears
-//		destroy setInterval
-//	
-//counter dynamically update and convert into minutes + seconds
-//
-//if pause clicked
-//	destroy setInterval
-//	turn pause to play
-//if play clicked
-//	create new setInterval
-//	turn play to pause
-//if reset clicked
-//	destroy setInterval
-//	reset counter value
-//	create new setInterval
 
