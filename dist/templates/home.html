@@ -1,6 +1,20 @@
 <!--add ng-show and ng-bind to reveal different timers--> 
 <section class="container-fluid">
-	<div class="work-timer" ng-hide="breakTimer">
+	<div class="task-history col-xs-4">
+		<h2>Task History</h2>
+		<form class="form-group" ng-submit="tasks.addTask()">
+			<label for="task">Task</label>
+			<input ng-model="task" type="text" class="form-control"/>
+			<br />
+			<button type="submit" class="btn btn-primary" id="task-button">Add Task</button><br /><br />
+		</form>
+		<ul ng-repeat="task in tasks.all">
+			<li>{{task.$value}}</li>
+		</ul>
+			
+	</div>
+	
+	<div class="work-timer col-xs-8" ng-hide="breakTimer">
 		<div>
 			<h1>{{counter | timecode}}
 			</h1>
@@ -9,7 +23,7 @@
 			<button type="button" class="btn btn-danger btn-lg" aria-pressed="true" ng-click="reset()">Reset</button>
 		</div>
 	</div>
-	<div class="break-timer" ng-show="breakTimer">
+	<div class="break-timer col-md-8" ng-show="breakTimer">
 		<div>
 			<h1> {{ break | timecode}}
 			</h1>

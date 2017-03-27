@@ -1,8 +1,14 @@
 (function() {
-	function TimerCtrl($scope,$interval) {
+	function TimerCtrl($scope, $interval, Tasks) {
+		$scope.tasks = Tasks;
+		console.log($scope.tasks);
+		
+		var mySound = new buzz.sound( "/assets/sounds/ElevatorDing.mp3", {
+  			preload: true,
+		});
 		
 		//Initialize variables
-		$scope.counter = 2;
+		$scope.counter = 1500;
 		$scope.break = 300;
 		$scope.workTimer = true;
 		$scope.breakTimer = false;
@@ -16,6 +22,10 @@
 			startWork = $interval(function() {
 				if($scope.counter <= 0) {
 					$interval.cancel(startWork);
+					
+					mySound.play();
+					console.log(mySound);
+					
 					$scope.breakTimer = true
 					console.log(($scope.breakTimer))
 					return;
@@ -38,6 +48,9 @@
 		$scope.reset = function() {
 			$scope.workTimer = true;
 			$interval.cancel(startWork);
+
+	
+			//$scope.tasks = $scope.counter = 1500;
 			$scope.counter = 1500;
 			$scope.workTimerRunning = false;
 		}
@@ -48,7 +61,14 @@
 			$scope.breakTimerRunning = true;
 			startBreakSession = $interval(function() {
 				if ($scope.break <= 0) {
-					$interval.cancel();
+					$interval.cancel(startBreakSession);
+					
+					mySound.play();
+					console.log(mySound);
+					
+					$scope.breakTimer = false;
+					$scope.counter = 1500;
+					$scope.workTimerRunning = false;
 					return;
 				}
 				$scope.break--;
@@ -66,7 +86,7 @@
 	
     angular
         .module('blocTime')
-        .controller('TimerCtrl', ['$scope', '$interval', TimerCtrl]);
+        .controller('TimerCtrl', ['$scope', '$interval', 'Tasks', TimerCtrl]);
 })();
 
 

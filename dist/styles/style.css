@@ -9,15 +9,25 @@ html {
     font-size: 100%;
 }
 
-/*
-.timer{
-	margin-top: 100px;
-	margin-left: 100px;
-	margin-right: 100px;
-	margin-bottom: 100px;
-	padding: 100px;
-	width: 50%;
+.task-history {
+	background-color: lightgray;
+	padding: 20px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+	height: 100%; 
 }
-*/
+
+#task-button {
+	float: right;
+}
+
+
+.work-timer, .break-timer{
+	margin: auto;
+	padding: 20px;
+	text-align: center;
+}
+
+
 
 

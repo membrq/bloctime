@@ -14,14 +14,27 @@
 
 	<ui-view></ui-view>
 	
+	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
+	<script>
+    	var config = {
+       		apiKey: "AIzaSyBobLX0PQiG8OcexEZTQE2KcWV53lWC-30",
+    		authDomain: "bloctime-69fb2.firebaseapp.com",
+    		databaseURL: "https://bloctime-69fb2.firebaseio.com",
+    		storageBucket: "bloctime-69fb2.appspot.com",
+    		messagingSenderId: "1042202248217"
+    	};
+    	firebase.initializeApp(config);
+    </script>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.1.0/buzz.min.js"></script>
     <script src="/scripts/app.js"></script>
 	<script src="/scripts/controllers/TimerCtrl.js"></script>
 	<script src="/scripts/filters/timecode.js"></script>
+	<script src="/scripts/tasks.js"></script>
+	
 </body>
 </html>
 
