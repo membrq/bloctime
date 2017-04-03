@@ -1,15 +1,15 @@
-<!--add ng-show and ng-bind to reveal different timers--> 
 <section class="container-fluid">
 	<div class="task-history col-xs-4">
 		<h2>Task History</h2>
-		<form class="form-group" ng-submit="tasks.addTask()">
+		<form class="form-group" ng-submit="tasks.addTask(text)">
 			<label for="task">Task</label>
-			<input ng-model="task" type="text" class="form-control"/>
+			<input ng-model="text" type="text" class="form-control"/>
 			<br />
 			<button type="submit" class="btn btn-primary" id="task-button">Add Task</button><br /><br />
 		</form>
-		<ul ng-repeat="task in tasks.all">
-			<li>{{task.$value}}</li>
+		<ul ng-repeat="task in tasks.all | orderBy:' -timestamp'">
+			<li>{{task.list}}</li><br />
+<!--		<span>{{task.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}</span>-->
 		</ul>
 			
 	</div>

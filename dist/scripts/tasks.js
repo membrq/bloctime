@@ -1,27 +1,20 @@
 (function() {
   function Tasks($firebaseArray) {
-	  console.log("here");
 	  
 	  var ref = firebase.database().ref();
 	  
 	  var tasks = $firebaseArray(ref);
 	  
-	  var addTask = function() {
-		  
+	  var addTask = function(text) {
 		  tasks.$add({
-			  //text: task.addText
-			  //$name: "task",
-			  //$value: task.addText
-			  $value: task 
+			  list: text,
+			  timestamp: Date.now()
 		  });
-		  console.log("hello");
-		  var task = null;
 	  }
 
       return {
          all: tasks,
 		 addTask: addTask
-		 //add: addTask
       };
   }
 
@@ -31,4 +24,3 @@
 })();
 
 
-//"auth != null"

@@ -1,8 +1,7 @@
 (function() {
 	function TimerCtrl($scope, $interval, Tasks) {
 		$scope.tasks = Tasks;
-		console.log($scope.tasks);
-		
+				
 		var mySound = new buzz.sound( "/assets/sounds/ElevatorDing.mp3", {
   			preload: true,
 		});

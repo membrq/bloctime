@@ -21,8 +21,3 @@
 })();
 
 
-
-//store database reference link in a variable
-//grab the data and store it on scope
-//maybe 3-way data-bind step
-
